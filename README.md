@@ -20,6 +20,10 @@ This project is open source. Oracle appreciates any contributions that are made 
 
 Learn how to [contribute](./CONTRIBUTING.md).
 
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
 ## License
 
 Copyright (c) 2025, Oracle and/or its affiliates.
