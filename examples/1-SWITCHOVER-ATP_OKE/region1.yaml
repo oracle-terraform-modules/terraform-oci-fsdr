@@ -1,0 +1,53 @@
+#// Copyright (c) 2025, Oracle and/or its affiliates.
+#// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+
+#################
+# Region1 Setup #
+#################
+
+# DG setup
+region1_dr_pg:
+  compartment_id: "ocid1.compartment.oc1..xxx" # update dr compartment id
+  display_name: "dr-pg-test-phx"
+  log_location:
+    bucket: "bucket-dr-log-drtest" # update the bucket name
+    namespace: "XXX" # update the bucket namespace
+  association:
+    role: PRIMARY
+    peer_id: "dr-pg-test-fra"
+    peer_region: "eu-frankfurt-1" # set DR peer region
+  disassociate_trigger: null
+  members: 
+    - autonomous_database_standby_type_for_dr_drills: "SNAPSHOT_STANDBY"
+      member_id: "ocid1.autonomousdatabase.oc1.phx.xxx" # update the atp db ocid
+      member_type: "AUTONOMOUS_DATABASE"
+    - member_id: "ocid1.cluster.oc1.phx.xxx" # update the oke ocid
+      member_type: "OKE_CLUSTER"
+      peer_cluster_id: "ocid1.cluster.oc1.eu-frankfurt-1.yyy" # update the peer oke ocid
+      backup_location:
+        bucket: "bucket-dr-backup-drtest" # update the bucket name
+        namespace: "XXX" # update the bucket namespace
+      backup_config:
+        backup_schedule: "FREQ=HOURLY;BYHOUR=0;BYMINUTE=0;INTERVAL=1"
+        exclude_namespaces: []
+        image_replication_vault_secret_id: null
+        max_number_of_backups_retained: 3
+        namespaces: ["ns1", "ns2"] # update the list of kubernetes namespace
+        replicate_images: "ENABLE"
+
+
+
+
+# Plan Setup
+dr_plan_region1:
+  display_name: Switchover-To-Phoenix
+  type: SWITCHOVER
+  dr_pg_display_name: "dr-pg-test-phx"
+
+# Execution Setup
+dr_plan_execution_region1: 
+  plan_execution_type: SWITCHOVER
+  are_prechecks_enabled: true
+  timeouts_create: 60m
+  timeouts_update: 60m

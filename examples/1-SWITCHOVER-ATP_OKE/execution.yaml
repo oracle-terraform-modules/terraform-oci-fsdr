@@ -1,0 +1,21 @@
+#// Copyright (c) 2025, Oracle and/or its affiliates.
+#// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+
+################################
+#       Execution call         #
+################################
+
+dr_plan_setup_on_region1: false
+dr_plan_setup_on_region2: false
+
+
+Region_of_execution: REGION2
+
+region1_refresh_trigger: 0
+region1_verify_trigger: 0
+region1_plan_execution: 0
+
+region2_refresh_trigger: 0
+region2_verify_trigger: 0
+region2_plan_execution: 0
