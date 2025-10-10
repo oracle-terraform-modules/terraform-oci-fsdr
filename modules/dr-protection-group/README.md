@@ -4,8 +4,7 @@ This terraform module is for creating dr protection group resource.
 
 ## Sample
 
-```
-hcl
+```hcl
 module "dr_protection_group" {
   source         = "oracle-terraform-modules/fsdr/oci//modules/dr-protection-group"
   compartment_id = "ocid1.compartment.oc1..xxx" 

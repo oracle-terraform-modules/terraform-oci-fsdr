@@ -13,8 +13,7 @@ Step2: In the providers.tf, specify the region1 and region2 region. EX: "us-phoe
 
 Step3: If you chose to use "SECURITY_TOKEN" as auth method , please do "oci session authenticate" for region1 and region2 region and have it in separate profile. EX: PHX and FRA.
 
-```
-bash
+```bash
 oci session authenticate
 ```
 
@@ -22,22 +21,19 @@ Step4: On the region1.yaml and region2.yaml ,under region1_dr_pg and region2_dr_
 
 Step5: Initialize the terraform,
 
-```
-bash
+```bash
 terraform init
 ```
 
 Step6: Verify the plan
 
-```
-bash
+```bash
 terraform plan
 ```
 
 Step7: Apply the changes, this will create the DR protection group in both region1 and region2, associate region2(standby) protection group to region1(primary)
 
-```
-bash
+```bash
 terraform apply -auto-approve
 ```
 
@@ -47,8 +43,7 @@ Step9: Increment the value of 'region2_plan_execution' to '1' in execution.yaml,
 
 Step10: Now to start the SWITCHOVER from REGION2 to REGION1, change the execution.yaml as below
 
-```
-yaml
+```yaml
 dr_plan_setup_on_region1: true
 dr_plan_setup_on_region2: true
 
@@ -63,8 +58,7 @@ Step11: Increment the value of 'region1_plan_execution' to '1', Run terraform ap
 
 Going forward with the continuous SWITCHOVER, please change below value alone
 
-```
-yaml
+```yaml
 Region_of_execution: REGION1
 
 region1_refresh_trigger: 0

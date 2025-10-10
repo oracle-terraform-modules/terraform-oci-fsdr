@@ -4,8 +4,7 @@ This terraform module is for creating dr plan and execution resource.
 
 ## Sample
 
-```
-hcl
+```hcl
 module "dr_plan" {
   source = "oracle-terraform-modules/fsdr/oci//modules/dr-plan-and-execution"
   dr_plan = {
