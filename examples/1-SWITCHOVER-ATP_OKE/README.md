@@ -100,3 +100,14 @@ No providers.
 | <a name="module_dr_protection_group_region1"></a> [dr\_protection\_group\_region1](#module\_dr\_protection\_group\_region1) | oracle-terraform-modules/fsdr/oci//modules/dr-protection-group | n/a |
 | <a name="module_dr_protection_group_region2"></a> [dr\_protection\_group\_region2](#module\_dr\_protection\_group\_region2) | oracle-terraform-modules/fsdr/oci//modules/dr-protection-group | n/a |
 
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
