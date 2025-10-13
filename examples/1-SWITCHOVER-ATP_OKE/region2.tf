@@ -6,7 +6,7 @@ module "dr_protection_group_region2" {
   providers = {
     oci = oci.region2
   }
-  source         = "../../modules/dr_protection_group"
+  source         = "../../modules/dr-protection-group"
   compartment_id = yamldecode(file("${path.module}/region2.yaml"))["region2_dr_pg"]["compartment_id"]
   display_name   = yamldecode(file("${path.module}/region2.yaml"))["region2_dr_pg"]["display_name"]
   log_location   = yamldecode(file("${path.module}/region2.yaml"))["region2_dr_pg"]["log_location"]
@@ -18,7 +18,7 @@ module "dr_plan_region2" {
   providers = {
     oci = oci.region2
   }
-  source = "../../modules/dr_plan_and_execution"
+  source = "../../modules/dr-plan-and-execution"
   dr_plan = merge(yamldecode(file("${path.module}/region2.yaml"))["dr_plan_region2"],
     { dr_protection_group_id = module.dr_protection_group_region2.dr_protection_group["id"]
       refresh_trigger        = yamldecode(file("${path.module}/execution.yaml"))["region2_refresh_trigger"]
@@ -30,7 +30,7 @@ module "dr_plan_execution_region2" {
     oci = oci.region2
   }
   count  = yamldecode(file("${path.module}/execution.yaml"))["region2_plan_execution"]
-  source = "../../modules/dr_plan_and_execution"
+  source = "../../modules/dr-plan-and-execution"
   dr_plan_execution = merge(yamldecode(file("${path.module}/region2.yaml"))["dr_plan_execution_region2"],
   { plan_id = module.dr_plan_region2[0].dr_plan["id"] })
 }
