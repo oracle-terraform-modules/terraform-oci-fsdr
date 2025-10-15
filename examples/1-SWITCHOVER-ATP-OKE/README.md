@@ -1,15 +1,15 @@
 # 1-SWITCHOVER-ATP_OKE
 
-This module is an opinionated approach of creating DR protection group, plan and execution to conduct SWITCHOVER activity.
+This module is an opinionated approach of creating DR protection group, plan and execution to conduct SWITCHOVER activity. 
 
 ## NOTE:
-This example is for adding ATP DB's and OKE clusters alone.
+This example is for adding ATP DB's and OKE clusters only.
 
 ## STEPS TO FOLLOW:
 
-Step1: Clone the repository and navigate to examples/1-SWITCHOVER-ATP_OKE.
+Step1: Clone the repository and navigate to examples/1-SWITCHOVER-ATP-OKE.
 
-Step2: In the providers.tf, specify the region1 and region2 region. EX: "us-phoenix-1" and "eu-frankfurt-1".
+Step2: In the providers.tf, specify the region1 and region2 region identifiers. In this example, we use "us-phoenix-1" as region 1 and "eu-frankfurt-1" as region 2. Update your region identifiers accordingly.
 
 Step3: If you chose to use "SECURITY_TOKEN" as auth method , please do "oci session authenticate" for region1 and region2 region and have it in separate profile. EX: PHX and FRA.
 
@@ -17,7 +17,9 @@ Step3: If you chose to use "SECURITY_TOKEN" as auth method , please do "oci sess
 oci session authenticate
 ```
 
-Step4: On the region1.yaml and region2.yaml ,under region1_dr_pg and region2_dr_pg update the compartment ocid, Autonomous Database details and OKE details(namespace which needs to be switchovered).
+If you use other forms of authentication as explained here https://docs.oracle.com/en-us/iaas/Content/dev/terraform/configuring.htm, make sure to update the providers.tf accordingly.
+
+Step4: On the region1.yaml and region2.yaml ,under region1_dr_pg and region2_dr_pg update the compartment ocid, autonomous Database details and OKE details(namespace which needs to be switchovered). If you want to use any other configuration for ATP and OKE, you should modify those properties accordingly.
 
 Step5: Initialize the terraform,
 
@@ -31,7 +33,7 @@ Step6: Verify the plan
 terraform plan
 ```
 
-Step7: Apply the changes, this will create the DR protection group in both region1 and region2, associate region2(standby) protection group to region1(primary)
+Step7: Apply the changes, this will create the DR protection group in both region1 and region2, associate region2(standby) protection group to region1(primary), add members. 
 
 ```bash
 terraform apply -auto-approve
@@ -39,7 +41,11 @@ terraform apply -auto-approve
 
 Step8: Change the dr_plan_setup_on_region2 option in execution.yaml as 'true', Run terraform apply. This will create a built in default dr plan for the members added in the region2.
 
-Step9: Increment the value of 'region2_plan_execution' to '1' in execution.yaml, Run terraform apply. This will start the execution of SWITCHOVER in the region2. SWITCHOVER happened from REGION1 to REGION2
+Step9: Increment the value of 'region2_plan_execution' to '1' in execution.yaml, Run terraform apply. This will start the execution of SWITCHOVER in the region2. SWITCHOVER will happen from REGION1 to REGION2. 
+
+In case if you want to run the Prechecks for the SWITCHOVER plan, please change the plan_execution_type to 'SWITCHOVER_PRECHECK' in region2.yaml file.  Once the prechecks are completed,change the plan_execution_type to "SWITCHOVER". It is highly recommended to run the prechecks first before running the SWITCHOVER plan. 
+
+After the successful completition of SWITCHOVER plan, DRPG in region 2 will become primary and DRPG in region 1 will become standby.
 
 Step10: Now to start the SWITCHOVER from REGION2 to REGION1, change the execution.yaml as below
 
@@ -52,11 +58,10 @@ Region_of_execution: REGION1
 
 Run terraform apply. This will create DR plan in the Region1.
 
-Step11: Increment the value of 'region1_plan_execution' to '1', Run terraform apply. This will start the execution of SWITCHOVER in the region1. 
+Step11: Increment the value of 'region1_plan_execution' to '1', Run terraform apply. This will start the execution of SWITCHOVER in the region1. Similar to Step 9, modify the plan_execution_type to 'SWITCHOVER_PRECHECK' and once the prechecks are completed flip back to 'SWITCHOVER_PRECHECK'
 
 
-
-Going forward with the continuous SWITCHOVER, please change below value alone
+Going forward with the continuous SWITCHOVER operations, please change below value alone
 
 ```yaml
 Region_of_execution: REGION1
