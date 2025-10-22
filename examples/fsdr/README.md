@@ -40,7 +40,7 @@ region2.yaml remove the empty set of add_member and add the members to the stand
 add_members:
 - member_id: "ocid1.cluster.oc1.eu-frankfurt-1.yyy" # update the oke ocid
   member_type: "OKE_CLUSTER"
-  peer_cluster_id: "ocid1.cluster.oc1.phx.aaaaaaaap67t4qjlkavn2ohs3pcf44nrfxcyzlkmaibd25mnrcd7eukmkcnq" # update the peer oke ocid
+  peer_cluster_id: "ocid1.cluster.oc1.phx.xxx" # update the peer oke ocid
   backup_location:
     bucket: "bucket-oke-backup-frankfurt" # update the bucket name
     namespace: "xxx" # update the bucket namespace
