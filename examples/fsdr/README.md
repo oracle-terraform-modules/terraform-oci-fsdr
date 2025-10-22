@@ -38,14 +38,14 @@ region2.yaml remove the empty set of add_member and add the members to the stand
 
 ```yaml
 add_members:
-- member_id: "ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaanb6wiykmpym2oem2phf463hjg4stewqaxp5ewmkpbchqjximn55a" # update the oke ocid
+- member_id: "ocid1.cluster.oc1.eu-frankfurt-1.yyy" # update the oke ocid
   member_type: "OKE_CLUSTER"
   peer_cluster_id: "ocid1.cluster.oc1.phx.aaaaaaaap67t4qjlkavn2ohs3pcf44nrfxcyzlkmaibd25mnrcd7eukmkcnq" # update the peer oke ocid
   backup_location:
     bucket: "bucket-oke-backup-frankfurt" # update the bucket name
-    namespace: "iotdev" # update the bucket namespace
+    namespace: "xxx" # update the bucket namespace
 - autonomous_database_standby_type_for_dr_drills: "REFRESHABLE_CLONE"
-  member_id: "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.antheljr7ewzdsqauw7c7vivrfwzravr6ypwudezf4u5gn3si4pgnf5ykzvq" # update the atp db ocid
+  member_id: "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.yyy" # update the atp db ocid
   member_type: "AUTONOMOUS_DATABASE"
 ```
 
