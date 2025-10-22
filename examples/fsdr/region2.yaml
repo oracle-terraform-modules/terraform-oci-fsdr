@@ -1,0 +1,56 @@
+# // Copyright (c) 2025, Oracle and/or its affiliates.
+# // Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+
+#################
+# Region2 Setup #
+#################
+compartment_id: "ocid1.compartment.oc1..xxx" # update dr compartment id
+protection_group_display_name: "dr-pg-fsdr-fra"
+log_location:
+  bucket: "bucket-dr-log-frankfurt" # create and update the bucket name
+  namespace: "XXX" # update the bucket namespace
+disassociate_trigger: null
+add_members: []
+# - member_id: "ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaanb6wiykmpym2oem2phf463hjg4stewqaxp5ewmkpbchqjximn55a" # update the oke ocid
+#   member_type: "OKE_CLUSTER"
+#   peer_cluster_id: "ocid1.cluster.oc1.phx.aaaaaaaap67t4qjlkavn2ohs3pcf44nrfxcyzlkmaibd25mnrcd7eukmkcnq" # update the peer oke ocid
+#   backup_location:
+#     bucket: "bucket-oke-backup-frankfurt" # update the bucket name
+#     namespace: "iotdev" # update the bucket namespace
+#   backup_config:
+#     backup_schedule: "FREQ=HOURLY;BYHOUR=0;BYMINUTE=0;INTERVAL=1"
+#     exclude_namespaces: []
+#     image_replication_vault_secret_id: null
+#     max_number_of_backups_retained: 3outout
+#     namespaces: ["dex-test", "microservice-ecp-sim"] # update the list of kubernetes namespace "dex-test", 
+#     replicate_images: "ENABLE"
+# - member_id: ocid1.volumegroup.oc1.eu-frankfurt-1.abtheljs3ixznqs7tulqxjy25hlqxf2jvyvbeym2x7ejrvupoxlfkjmbuvnq
+#   member_type: VOLUME_GROUP
+# - autonomous_database_standby_type_for_dr_drills: "REFRESHABLE_CLONE"
+#   member_id: "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.antheljr7ewzdsqauw7c7vivrfwzravr6ypwudezf4u5gn3si4pgnf5ykzvq" # update the atp db ocid
+#   member_type: "AUTONOMOUS_DATABASE"
+remove_members: []
+# - "ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaanb6wiykmpym2oem2phf463hjg4stewqaxp5ewmkpbchqjximn55a"
+# - "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.antheljr7ewzdsqauw7c7vivrfwzravr6ypwudezf4u5gn3si4pgnf5ykzvq"
+dr_plan_and_execution:
+# - plan_display_name: SWITCHOVER-TO-FRANKFURT
+#   type: SWITCHOVER
+#   refresh_trigger: 1
+#   verify_trigger: 1
+#   plan_execution:
+#   - execution_display_name: SWITCHOVER-1
+#     plan_execution_type: SWITCHOVER
+#     timeouts_create: 60m
+#   - execution_display_name: SWITCHOVER-2
+#     plan_execution_type: SWITCHOVER_PRECHECK
+#     timeouts_create: 60m
+#     are_prechecks_enabled: false
+# - plan_display_name: STARTDRILL-TO-FRANKFURT
+#   type: START_DRILL
+#   refresh_trigger: 1
+#   verify_trigger: 1
+#   plan_execution: []
+
+
+

@@ -1,0 +1,14 @@
+// Copyright (c) 2025, Oracle and/or its affiliates.
+// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+
+terraform {
+  required_providers {
+    oci = {
+      source                = "oracle/oci"
+      version               = ">= 5.0.0"
+      configuration_aliases = [oci.region1, oci.region2]
+    }
+  }
+  required_version = ">= 1.3.0"
+}

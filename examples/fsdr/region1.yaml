@@ -1,0 +1,43 @@
+# // Copyright (c) 2025, Oracle and/or its affiliates.
+# // Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+
+#################
+# Region1 Setup #
+#################
+compartment_id: "ocid1.compartment.oc1..xxx" # update dr compartment id
+protection_group_display_name: "dr-pg-fsdr-phx"
+log_location:
+  bucket: "bucket-dr-log-drtest" # create and update the bucket name
+  namespace: "XXX" # update the bucket namespace
+peer_region: "eu-frankfurt-1"
+disassociate_trigger: null
+add_members: []
+# - autonomous_database_standby_type_for_dr_drills: "SNAPSHOT_STANDBY"
+#   member_id: "ocid1.autonomousdatabase.oc1.phx.xxx" # update the atp db ocid
+#   member_type: "AUTONOMOUS_DATABASE"
+# - member_id: "ocid1.cluster.oc1.phx.xxx" # update the oke ocid
+#   member_type: "OKE_CLUSTER"
+#   peer_cluster_id: "ocid1.cluster.oc1.eu-frankfurt-1.yyy" # update the peer oke ocid
+#   backup_location:
+#     bucket: "bucket-dr-backup-drtest" # update the bucket name
+#     namespace: "XXX" # update the bucket namespace
+#   backup_config:
+#     backup_schedule: "FREQ=HOURLY;BYHOUR=0;BYMINUTE=0;INTERVAL=1"
+#     exclude_namespaces: []
+#     image_replication_vault_secret_id: null
+#     max_number_of_backups_retained: 3
+#     namespaces: ["ns1", "ns2"] # update the list of kubernetes namespace
+#     replicate_images: "ENABLE"
+# - member_id: ocid1.volumegroup.oc1.phx.xxx
+#   member_type: VOLUME_GROUP
+remove_members: []
+dr_plan_and_execution:
+# - plan_display_name: SWITCHOVER-TO-PHOENIX
+#   type: SWITCHOVER
+#   refresh_trigger: null
+#   verify_trigger: null
+#   # plan_execution:
+#   # - execution_display_name: SWITCHOVER-1
+#   #   plan_execution_type: SWITCHOVER
+#   #   timeouts_create: 60m
