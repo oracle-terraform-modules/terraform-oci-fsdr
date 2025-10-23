@@ -5,8 +5,8 @@
 #################
 # Region2 Setup #
 #################
-compartment_id: "ocid1.compartment.oc1..aaaaaaaau5wfi3flyc2c6kvcq6hxsb5tfyd3zlnp27jsxvnyzhyefu7x4hxq" # update dr compartment id
-protection_group_display_name: "drpg-tf-phx"
+compartment_id: "ocid1.compartment.oc1..xxxx # update dr compartment id
+protection_group_display_name: "app-phx"
 log_location:
   bucket: "drpg-logs-phx" # create and update the bucket name
   namespace: "xxxx" # update the bucket namespace
@@ -26,7 +26,7 @@ add_members:
         exclude_namespaces: []
         image_replication_vault_secret_id: null
         max_number_of_backups_retained: 3
-        namespaces: ["nginx"] # update the list of kubernetes namespace
+        namespaces: ["ns1", "ns2"] # update the list of kubernetes namespace
         replicate_images: "ENABLE"
 remove_members: []
 dr_plan_and_execution:
