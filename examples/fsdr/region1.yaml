@@ -5,39 +5,59 @@
 #################
 # Region1 Setup #
 #################
-compartment_id: "ocid1.compartment.oc1..xxx" # update dr compartment id
-protection_group_display_name: "dr-pg-fsdr-phx"
+compartment_id: "ocid1.compartment.oc1..xxx" # update the DR protection group compartment id
+protection_group_display_name: "app-iad"  # update the DR protection group name
 log_location:
-  bucket: "bucket-dr-log-drtest" # create and update the bucket name
-  namespace: "XXX" # update the bucket namespace
-peer_region: "eu-frankfurt-1"
+  bucket: "drpg-logs-iad" # create and update the bucket name
+  namespace: "xxxx" # update the bucket namespace
+peer_region: "us-phoenix-1" # update the peer region
 disassociate_trigger: null
-add_members: []
-# - autonomous_database_standby_type_for_dr_drills: "SNAPSHOT_STANDBY"
-#   member_id: "ocid1.autonomousdatabase.oc1.phx.xxx" # update the atp db ocid
-#   member_type: "AUTONOMOUS_DATABASE"
-# - member_id: "ocid1.cluster.oc1.phx.xxx" # update the oke ocid
-#   member_type: "OKE_CLUSTER"
-#   peer_cluster_id: "ocid1.cluster.oc1.eu-frankfurt-1.yyy" # update the peer oke ocid
-#   backup_location:
-#     bucket: "bucket-dr-backup-drtest" # update the bucket name
-#     namespace: "XXX" # update the bucket namespace
-#   backup_config:
-#     backup_schedule: "FREQ=HOURLY;BYHOUR=0;BYMINUTE=0;INTERVAL=1"
-#     exclude_namespaces: []
-#     image_replication_vault_secret_id: null
-#     max_number_of_backups_retained: 3
-#     namespaces: ["ns1", "ns2"] # update the list of kubernetes namespace
-#     replicate_images: "ENABLE"
-# - member_id: ocid1.volumegroup.oc1.phx.xxx
-#   member_type: VOLUME_GROUP
+add_members: 
+ - autonomous_database_standby_type_for_dr_drills: "SNAPSHOT_STANDBY"
+   member_id: "ocid1.autonomousdatabase.oc1.iad.xxxx" # update the atp db ocid
+   member_type: "AUTONOMOUS_DATABASE"
+ - member_id: "ocid1.cluster.oc1.iad.xxxx" # update the oke ocid
+   member_type: "OKE_CLUSTER"
+   peer_cluster_id: "ocid1.cluster.oc1.phx.yyyy" # update the peer oke ocid
+   backup_location:
+     bucket: "oke-backup-iad" # create and update the bucket name
+     namespace: "xxxx" # update the bucket namespace
+   backup_config:
+     backup_schedule: "FREQ=HOURLY;BYHOUR=0;BYMINUTE=0;INTERVAL=1"
+     exclude_namespaces: []
+     image_replication_vault_secret_id: null
+     max_number_of_backups_retained: 3
+     namespaces: ["ns1", "ns2"] # update the list of kubernetes namespace
+     replicate_images: "ENABLE"
+ - member_id: ocid1.volumegroup.oc1.iad.xxxx # update the volume group ocid
+   member_type: VOLUME_GROUP
+ - member_id: "ocid1.instance.oc1.iad.xxxx" # update the compute instance ocid
+   member_type: "COMPUTE_INSTANCE_MOVABLE"
+   vnic_mapping: []
+   vnic_mappings:
+    - destination_nsg_id_list: []
+      destination_primary_private_ip_address: ""
+      destination_primary_private_ip_hostname_label: ""
+      destination_reserved_public_ip_id: ""
+      destination_subnet_id: "ocid1.subnet.oc1.phx.yyyy " # update the destination subnet ocid
+      source_vnic_id: "ocid1.vnic.oc1.iad.xxxx" # update the source vnic ocid
 remove_members: []
 dr_plan_and_execution:
-# - plan_display_name: SWITCHOVER-TO-PHOENIX
-#   type: SWITCHOVER
+- plan_display_name: SWITCHOVER-TO-ASHBURN
+  type: SWITCHOVER
+  refresh_trigger: null
+  verify_trigger:  null
+  plan_execution: 
+    - execution_display_name: SWITCHOVER-1
+      plan_execution_type: SWITCHOVER
+      timeouts_create: 120m
+#   - execution_display_name: SWITCHOVER-1-PRECHECK
+#     plan_execution_type: SWITCHOVER_PRECHECK
+#     timeouts_create: 60m
+#     are_prechecks_enabled: false
+# - plan_display_name: STARTDRILL-IN-ASHBURN
+#   type: START_DRILL
 #   refresh_trigger: null
 #   verify_trigger: null
-#   # plan_execution:
-#   # - execution_display_name: SWITCHOVER-1
-#   #   plan_execution_type: SWITCHOVER
-#   #   timeouts_create: 60m
+#   plan_execution: []
+
