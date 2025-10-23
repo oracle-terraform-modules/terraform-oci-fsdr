@@ -6,7 +6,7 @@ module "dr_protection_group_region1" {
   providers = {
     oci = oci.region1
   }
-  source         = "./modules/dr_protection_group"
+  source         = "./modules/dr-protection-group"
   compartment_id = var.region1_config["compartment_id"]
   display_name   = var.region1_config["protection_group_display_name"]
   association = { role = "PRIMARY"
@@ -25,7 +25,7 @@ module "dr_plan_region1" {
     oci = oci.region1
   }
   for_each = { for entry in var.region1_config["dr_plan_and_execution"] : entry.plan_display_name => entry }
-  source   = "./modules/dr_plan_and_execution"
+  source   = "./modules/dr-plan-and-execution"
   dr_plan = {
     display_name           = each.value["plan_display_name"]
     dr_protection_group_id = module.dr_protection_group_region1.dr_protection_group["id"]
@@ -58,7 +58,7 @@ module "dr_plan_execution_region1" {
     oci = oci.region1
   }
   for_each = { for entry in local.region1_plan_execution : entry.index => entry }
-  source   = "./modules/dr_plan_and_execution"
+  source   = "./modules/dr-plan-and-execution"
   dr_plan_execution = {
     plan_execution_type   = each.value["plan_execution_type"]
     are_prechecks_enabled = each.value["are_prechecks_enabled"]

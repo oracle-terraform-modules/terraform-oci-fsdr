@@ -29,10 +29,6 @@ module "fsdr" {
   region2_config = yamldecode(file("${path.module}/region2.yaml"))
 }
 ```
-
-
-## Requirements
-
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
@@ -49,12 +45,12 @@ module "fsdr" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dr_plan_execution_region1"></a> [dr\_plan\_execution\_region1](#module\_dr\_plan\_execution\_region1) | ./modules/dr_plan_and_execution | n/a |
-| <a name="module_dr_plan_execution_region2"></a> [dr\_plan\_execution\_region2](#module\_dr\_plan\_execution\_region2) | ./modules/dr_plan_and_execution | n/a |
-| <a name="module_dr_plan_region1"></a> [dr\_plan\_region1](#module\_dr\_plan\_region1) | ./modules/dr_plan_and_execution | n/a |
-| <a name="module_dr_plan_region2"></a> [dr\_plan\_region2](#module\_dr\_plan\_region2) | ./modules/dr_plan_and_execution | n/a |
-| <a name="module_dr_protection_group_region1"></a> [dr\_protection\_group\_region1](#module\_dr\_protection\_group\_region1) | ./modules/dr_protection_group | n/a |
-| <a name="module_dr_protection_group_region2"></a> [dr\_protection\_group\_region2](#module\_dr\_protection\_group\_region2) | ./modules/dr_protection_group | n/a |
+| <a name="module_dr_plan_execution_region1"></a> [dr\_plan\_execution\_region1](#module\_dr\_plan\_execution\_region1) | ./modules/dr-plan-and-execution | n/a |
+| <a name="module_dr_plan_execution_region2"></a> [dr\_plan\_execution\_region2](#module\_dr\_plan\_execution\_region2) | ./modules/dr-plan-and-execution | n/a |
+| <a name="module_dr_plan_region1"></a> [dr\_plan\_region1](#module\_dr\_plan\_region1) | ./modules/dr-plan-and-execution | n/a |
+| <a name="module_dr_plan_region2"></a> [dr\_plan\_region2](#module\_dr\_plan\_region2) | ./modules/dr-plan-and-execution | n/a |
+| <a name="module_dr_protection_group_region1"></a> [dr\_protection\_group\_region1](#module\_dr\_protection\_group\_region1) | ./modules/dr-protection-group | n/a |
+| <a name="module_dr_protection_group_region2"></a> [dr\_protection\_group\_region2](#module\_dr\_protection\_group\_region2) | ./modules/dr-protection-group | n/a |
 
 ## Resources
 
@@ -83,6 +79,8 @@ module "fsdr" {
 | <a name="output_region2_members"></a> [region2\_members](#output\_region2\_members) | Members of the existing protection group in region2 |
 | <a name="output_region2_plan_ids"></a> [region2\_plan\_ids](#output\_region2\_plan\_ids) | OCID of region2 plans |
 
+
+
 ## Contributing
 
 This project is open source. Oracle appreciates any contributions that are made by the open source community.
@@ -99,4 +97,5 @@ Copyright (c) 2025, Oracle and/or its affiliates.
 
 Licensed under the Universal Permissive License 1.0 or Apache License 2.0.
 
-See [LICENSE](./LICENSE) for more details.
+See [LICENSE](./LICENSE) for more details.## Requirements
+
