@@ -41,7 +41,7 @@ add_members: []
 #       "destination_reserved_public_ip_id": ""
 #       "destination_subnet_id": "ocid1.subnet.oc1.phx.yyyy" # update the destination subnet ocid
 #       "source_vnic_id": "ocid1.vnic.oc1.iad.xxxx" # update the source vnic ocid
-#remove_members: []
+remove_members: []
 # - ocid1.volumegroup.oc1.iad.abuwcljrf4yeszab4eojieumltzaew4hnnjpjukxaz2rzb5rjac7rm74555a
 dr_plan_and_execution: []
 # - plan_display_name: SWITCHOVER-TO-ASHBURN
