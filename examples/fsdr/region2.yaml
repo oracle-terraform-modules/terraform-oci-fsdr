@@ -28,6 +28,8 @@ add_members: []
     #     max_number_of_backups_retained: 3
     #     namespaces: ["nginx"] # update the list of kubernetes namespace
     #     replicate_images: "ENABLE"
+remove_members: []
+# - ocid1.volumegroup.oc1.iad.abuwcljrf4yeszab4eojieumltzaew4hnnjpjukxaz2rzb5rjac7rm74555a
 dr_plan_and_execution: 
 # - plan_display_name: SWITCHOVER-TO-PHOENIX
 #   type: SWITCHOVER
