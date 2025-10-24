@@ -319,12 +319,12 @@ After the switchover, Region 1 is now the standby region. Follow these steps to 
 #### Prepare the YAML files
 
 **a. Update region1.yaml:**
-- Add empty brackets `[]` to `add_members` and `dr_plan_and_execution`
-- Comment out the properties in both sections
+- Add empty brackets `[]` to `add_members`
+- Comment out the member properties 
 
 **b. Update region2.yaml:**
 - Add empty brackets `[]` to `add_members`
-- Comment out the properties in this section
+- Comment out the member properties
 
 **c. Add DR plan configuration to region1.yaml:**
 
@@ -364,6 +364,7 @@ You can also create failover plans and drill plans following the same approach.
 
 Understanding how `add_members` and `remove_members` work is crucial for proper configuration management.
 
+
 ### add_members
 - Use this to add new members OR modify existing ones
 - After running `terraform apply`, remove those members from the YAML file for the next run
@@ -389,6 +390,9 @@ remove_members:
   - "ocid1.autonomousdatabase.oc1.phx.yyy"
 ```
 
+### Plan execution failures
+
+Any plan failures encountered during plan execution must be handled outside of Terraform. 
 ---
 
 ## Questions or Issues?
