@@ -12,7 +12,7 @@ examples folder contains fully-functional examples that you can copy and paste "
 ## Pre-requisites:
 
 - git is installed. 
-- Terraform 1.3.0 or higher version is installed.
+- Terraform 1.3.0 or higher version is installed. More details of how to install Terraform [Install Terraform](https://docs.oracle.com/en-us/iaas/Content/dev/terraform/tutorials/tf-provider.htm).
 
 ## Usage
 
