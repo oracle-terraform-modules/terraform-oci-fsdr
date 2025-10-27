@@ -3,16 +3,16 @@
 
 provider "oci" {
   alias               = "region1"
-  region              = "us-phoenix-1"
+  region              = "us-ashburn-1"
   auth                = "SecurityToken"
-  config_file_profile = "PHX"
+  config_file_profile = "IAD"
 }
 
 provider "oci" {
   alias               = "region2"
-  region              = "eu-frankfurt-1"
+  region              = "us-phoenix-1"
   auth                = "SecurityToken"
-  config_file_profile = "FRA"
+  config_file_profile = "PHX"
 }
 
 terraform {
