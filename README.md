@@ -20,7 +20,7 @@ See the [examples/](./examples/fsdr/) folder for usage examples.
 
 ```hcl
 module "fsdr" {
-  source = "../../"
+  source = "oracle-terraform-modules/fsdr/oci"
   providers = {
     oci.region1 = oci.region1
     oci.region2 = oci.region2
