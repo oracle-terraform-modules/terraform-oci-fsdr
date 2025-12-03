@@ -91,7 +91,7 @@ variable "region1_config" {
           mount_target_id = optional(string, null)
         }), null)
         unmount_details = optional(object({
-          unmount_target_id = optional(string, null)
+          mount_target_id = optional(string, null)
         }), null)
         mount_point     = optional(string, null)
         mount_target_id = optional(string, null)
@@ -251,7 +251,7 @@ variable "region2_config" {
           mount_target_id = optional(string, null)
         }), null)
         unmount_details = optional(object({
-          unmount_target_id = optional(string, null)
+          mount_target_id = optional(string, null)
         }), null)
         mount_point     = optional(string, null)
         mount_target_id = optional(string, null)
